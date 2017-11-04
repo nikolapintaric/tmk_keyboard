@@ -1,42 +1,100 @@
 #include "keymap_common.h"
 
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* 0: qwerty */
-    KEYMAP_ANSI(
+    /* 0: qwerty 
+     * ,-----------------------------------------------------------.
+     * |GRV| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = |BACKSPC|
+     * |-----------------------------------------------------------|
+     * | TAB | Q | W | E | R | T | Y | U | I | O | P | { | } | ENT |
+     * |------------------------------------------------------|    |
+     * |ESCFN0| A | S | D | F | G | H | J | K | L | ; | ' | \ |    |
+     * |-----------------------------------------------------------|
+     * |  FN1   | Z | X | C | V | B | N | M | , | . | / |   RSFT   |
+     * |-----------------------------------------------------------|
+     * |LCTL|LGUI|LALT|         SPACE          |FN0 |RGUI|DOWN|RGHT|
+     * `-----------------------------------------------------------'
+     */
+    KEYMAP(
         GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC, \
-        TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS, \
-        CAPS,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,  \
-        LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,          RSFT, \
-        LCTL,LGUI,LALT,          SPC,                     FN0, RGUI,APP, RCTL),
-    /* 1: colemak */
+        TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,      \
+        FN0, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,BSLS,ENT,  \
+        FN1, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,    FN2, \
+        LCTL,LGUI,LALT,          SPC,                     FN0, LEFT,DOWN, RIGHT
+        ),
+    
+    /* Function layer 1
+     * ,-----------------------------------------------------------.
+     * |PAU| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|       |
+     * |-----------------------------------------------------------|
+     * |     |   |   |   |   |   |MUT|VLD|VLU|   |   |   |   |     |
+     * |------------------------------------------------------|    |
+     * |      |   |   |   |   |   |LFT|DWN|UP |RGH|   |   |   |    |
+     * |-----------------------------------------------------------|
+     * |        |   |   |   |   |   |   |   |   |   |   |          |
+     * |-----------------------------------------------------------|
+     * |    |    |    |                        |    |    |    |    |
+     * `-----------------------------------------------------------'
+     */
+
+    KEYMAP(
+        PAUS,F1  ,F2  ,F3  ,F4  ,F5  ,F6  ,F7  ,F8  ,F9  ,F10 ,F11 ,F12 ,TRNS, \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,MUTE,VOLD,VOLU,TRNS,TRNS,TRNS,TRNS,      \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN, UP,RIGHT,TRNS,TRNS,TRNS,TRNS, \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,           \
+        TRNS,TRNS,TRNS,          TRNS,                     TRNS,TRNS,TRNS,TRNS
+        ),
+
+    /*
+     * ,-----------------------------------------------------------.
+     * |   |   |   |   |   |   |   |   |   |   |   |   |   |       |
+     * |-----------------------------------------------------------|
+     * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |
+     * |-----------------------------------------------------------|
+     * |      |   |   |   |   |   |   |   |   |   |   |   |        |
+     * |-----------------------------------------------------------|
+     * |        |   |   |   |   |   |   |   |   |   |   |          |
+     * |-----------------------------------------------------------|
+     * |    |    |    |                        |    |    |    |    |
+     * `-----------------------------------------------------------'
+     */
+
+    KEYMAP(
+        PAUS,F1  ,F2  ,F3  ,F4  ,F5  ,F6  ,F7  ,F8  ,F9  ,F10 ,F11 ,F12 ,TRNS, \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,           \
+        TRNS,TRNS,TRNS,          TRNS,                     TRNS,TRNS,TRNS,TRNS
+        ),
+
+    /* 1: colemak *
     KEYMAP_ANSI(
         GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC, \
         TAB, Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN,LBRC,RBRC,BSLS, \
         BSPC,A,   R,   S,   T,   D,   H,   N,   E,   I,   O,   QUOT,     ENT,  \
         LSFT,Z,   X,   C,   V,   B,   K,   M,   COMM,DOT, SLSH,          RSFT, \
         LCTL,LGUI,LALT,          SPC,                     FN0, RGUI,APP, RCTL),
-    /* 2: dvorak */
+    /* 2: dvorak *
     KEYMAP_ANSI(
         GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   LBRC,RBRC,BSPC, \
         TAB, QUOT,COMM,DOT, P,   Y,   F,   G,   C,   R,   L,   SLSH,EQL, BSLS, \
         CAPS,A,   O,   E,   U,   I,   D,   H,   T,   N,   S,   MINS,     ENT,  \
         LSFT,SCLN,Q,   J,   K,   X,   B,   M,   W,   V,   Z,             RSFT, \
         LCTL,LGUI,LALT,          SPC,                     FN0, RGUI,APP, RCTL),
-    /* 3: workman */
+    /* 3: workman *
     KEYMAP_ANSI(
         GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC, \
         TAB, Q,   D,   R,   W,   B,   J,   F,   U,   P,   SCLN,LBRC,RBRC,BSLS, \
         BSPC,A,   S,   H,   T,   G,   Y,   N,   E,   O,   I,   QUOT,     ENT,  \
         LSFT,Z,   X,   M,   C,   V,   K,   L,   COMM,DOT, SLSH,          RSFT, \
         LCTL,LGUI,LALT,          SPC,                     FN0, RGUI,APP, RCTL),
-    /* 4: Poker with Arrow */
+    /* 4: Poker with Arrow *
     KEYMAP_ANSI(
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS, \
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          UP,   \
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,LEFT,DOWN,RGHT),
-    /* 5: Poker with Esc */
+    /* 5: Poker with Esc *
     KEYMAP_ANSI(
         ESC, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
@@ -59,7 +117,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * FnL: to Layout selector overaly
      * FnQ: toggle Esc overlay
      * FnS: toggle Arrow overlay
-     */
+     *
     KEYMAP_ANSI(
         ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS, \
         TRNS,FN2, UP,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,CALC,TRNS,HOME,INS, FN4,  \
@@ -82,16 +140,84 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Lc: set Colemak layout
      * Ld: set Dvorak layout
      * Lw: set Workman layout
-     */
+     *
     KEYMAP_ANSI(
         FN5, FN6, FN7, FN8, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
         TRNS,FN5, FN8, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
         TRNS,TRNS,TRNS,FN7, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS, \
         TRNS,TRNS,TRNS,FN6, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS, \
         TRNS,TRNS,TRNS,          TRNS,                    TRNS,TRNS,TRNS,TRNS),
+    */
 };
+
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    if (record->event.pressed) dprint("P"); else dprint("R");
+    dprintf("%d", record->tap.count);
+    if (record->tap.interrupted) dprint("i");
+    dprint("\n");
+
+    switch (id) {
+        case 0:
+            // Shift parentheses example: LShft + tap '('
+            // http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#shift-parentheses
+            // http://geekhack.org/index.php?topic=41989.msg1304899#msg1304899
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_LSHIFT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_LSHIFT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_9);
+                    unregister_code(KC_9);
+                    del_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_LSHIFT));
+                }
+            }
+            break;
+        case 1:
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_RSHIFT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_RSHIFT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_RSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_0);
+                    unregister_code(KC_0);
+                    del_weak_mods(MOD_BIT(KC_RSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_RSHIFT));
+                }
+            }
+            break;
+    }
+}
+
+
 const action_t PROGMEM fn_actions[] = {
-    /* Poker Layout */
+  [0] = ACTION_LAYER_TAP_KEY(1, KC_ESC),
+  [1] = ACTION_FUNCTION_TAP(0),
+  [2] = ACTION_FUNCTION_TAP(1),
+    /* Poker Layout 
     [0] = ACTION_LAYER_MOMENTARY(6),  // to Fn overlay
     [1] = ACTION_LAYER_TOGGLE(4),     // toggle arrow overlay
     [2] = ACTION_LAYER_TOGGLE(5),     // toggle Esc overlay
@@ -101,4 +227,5 @@ const action_t PROGMEM fn_actions[] = {
     [6] = ACTION_DEFAULT_LAYER_SET(1),  // set colemak layout
     [7] = ACTION_DEFAULT_LAYER_SET(2),  // set dvorak layout
     [8] = ACTION_DEFAULT_LAYER_SET(3),  // set workman layout
+    */
 };
